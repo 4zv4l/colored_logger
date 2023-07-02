@@ -14,7 +14,7 @@ method log*(logger: ColoredConsoleLogger, level: Level, args: varargs[string, `$
     cdef = ansiForegroundColorCode(fgDefault)
     lvlname = LevelNames[level]
     spaces = " ".repeat("NOTICE".len - lvlname.len)
-    fmt = logger.fmtStr.multiReplace(("$levelname", color & "$levelname" & cdef & spaces), ("$levelid", color & "$levelid" & cdef & spaces))
+    fmt = logger.fmtStr.multiReplace(("$levelname", color & "$levelname" & cdef & spaces), ("$levelid", color & "$levelid" & cdef))
     line = substituteLog(fmt, level, args)
   if logger.useStderr: stderr.writeLine line
   else: stdout.writeLine line
