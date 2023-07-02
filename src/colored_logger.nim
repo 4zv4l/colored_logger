@@ -9,7 +9,7 @@ proc newColoredLogger*(threshold = lvlAll, fmtStr = defaultFmtStr, useStderr = f
 const LevelColours: array[Level, Color] = [colWhite, colWhite, colDarkCyan, colDarkOliveGreen, colOrange, colRed, colDarkRed, colWhite]
 
 method log*(logger: ColoredConsoleLogger, level: Level, args: varargs[string, `$`]) =
-  var
+  let
     color = ansiForegroundColorCode(LevelColours[level])
     cdef = ansiForegroundColorCode(fgDefault)
     lvlname = LevelNames[level]
