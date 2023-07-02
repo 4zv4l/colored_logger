@@ -22,3 +22,6 @@ warn "Careful here !"
 error "Error here please check !"
 fatal "Bye :("
 ```
+
+## Look
+![image](https://github.com/4zv4l/colored_logger/assets/46655455/9c0aa917-8e8c-4b86-b296-e4359425afcf)
