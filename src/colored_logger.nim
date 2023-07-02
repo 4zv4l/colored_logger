@@ -6,14 +6,15 @@ proc newColoredLogger*(threshold = lvlAll, fmtStr = defaultFmtStr, useStderr = f
   ColoredConsoleLogger(levelThreshold: threshold, fmtStr: fmtStr, useStderr: useStderr)
 
 #                                         ALL       DEBUG     INFO     NOTICE   WARN       ERROR   FATAL     NONE
-const LevelColours: array[Level, Color] = [colWhite, colWhite, colCyan, colLime, colOrange, colRed, colDarkRed, colWhite]
+const LevelColours: array[Level, Color] = [colWhite, colWhite, colDarkCyan, colDarkOliveGreen, colOrange, colRed, colDarkRed, colWhite]
 
 method log*(logger: ColoredConsoleLogger, level: Level, args: varargs[string, `$`]) =
   var
-    line = substituteLog(logger.fmtStr, level, args)
-    color = LevelColours[level]
+    color = ansiForegroundColorCode(LevelColours[level])
+    cdef = ansiForegroundColorCode(fgDefault)
     lvlname = LevelNames[level]
     spaces = " ".repeat("NOTICE".len - lvlname.len)
-  line = line.replace(lvlname, ansiForegroundColorCode(color) & lvlname & ansiForegroundColorCode(fgDefault) & spaces)
+    fmt = logger.fmtStr.multiReplace(("$levelname", color & "$levelname" & cdef & spaces), ("$levelid", color & "$levelid" & cdef & spaces))
+    line = substituteLog(fmt, level, args)
   if logger.useStderr: stderr.writeLine line
   else: stdout.writeLine line
