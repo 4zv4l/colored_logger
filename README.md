@@ -9,10 +9,10 @@ A simple colored logger from std/logging
 ## Example
 
 ```nim
-import std/logging
+import std/[logging]
 import colored_logger
 
-let logger = newColoredLogger(fmtStr="[$time] - $levelname: ", useStderr = true)
+let logger = newColoredLogger(fmtStr="$datetime $levelname [$appname] ")
 addHandler(logger)
 
 debug "Debugging !"
@@ -24,4 +24,5 @@ fatal "Bye :("
 ```
 
 ## Look
-![image](https://github.com/4zv4l/colored_logger/assets/46655455/9c0aa917-8e8c-4b86-b296-e4359425afcf)
+
+![image](https://github.com/4zv4l/colored_logger/assets/46655455/90c26501-0a22-4642-b7ab-8bacfc3ad815)
