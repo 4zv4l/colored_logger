@@ -5,15 +5,16 @@
 #
 # To run these tests, simply execute `nimble test`.
 
-import std/logging
+import std/[logging,unittest]
 import colored_logger
 
-let logger = newColoredLogger(fmtStr="[$time] - $levelname: ", useStderr = true)
-addHandler(logger)
+test "simple colored logging":
+  let logger = newColoredLogger(fmtStr="[$time] - $levelname: ", useStderr = true)
+  addHandler(logger)
 
-debug "Debugging !"
-info "Hello There !"
-notice "Let's notice this !"
-warn "Careful here !"
-error "Error here please check !"
-fatal "Bye :("
+  debug "Debugging !"
+  info "Hello There !"
+  notice "Let's notice this !"
+  warn "Careful here !"
+  error "Error here please check !"
+  fatal "Bye :("
