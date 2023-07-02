@@ -9,7 +9,7 @@ import std/[logging,unittest]
 import colored_logger
 
 test "simple colored logging":
-  let logger = newColoredLogger(fmtStr="[$time] - $levelname: ", useStderr = true)
+  let logger = newColoredLogger(fmtStr="$datetime $levelname [$appname] ")
   addHandler(logger)
 
   debug "Debugging !"
