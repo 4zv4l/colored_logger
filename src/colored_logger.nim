@@ -6,7 +6,7 @@ const coolerFmtStr* = "$datetime $levelname [$appname] "
 proc newColoredLogger*(threshold = lvlAll, fmtStr = defaultFmtStr, useStderr = false): ColoredConsoleLogger =
   ColoredConsoleLogger(levelThreshold: threshold, fmtStr: fmtStr, useStderr: useStderr)
 
-#                                         ALL       DEBUG     INFO     NOTICE   WARN       ERROR   FATAL     NONE
+#                                          DEBUG     DEBUG     INFO         NOTICE             WARN       ERROR   FATAL       NONE
 const LevelColours: array[Level, Color] = [colWhite, colWhite, colDarkCyan, colDarkOliveGreen, colOrange, colRed, colDarkRed, colWhite]
 
 method log*(logger: ColoredConsoleLogger, level: Level, args: varargs[string, `$`]) =
