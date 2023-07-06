@@ -12,7 +12,7 @@ A simple colored logger from std/logging
 import std/[logging]
 import colored_logger
 
-let logger = newColoredLogger(fmtStr="$datetime $levelname [$appname] ")
+let logger = newColoredLogger(fmtStr=coolerFmtStr)
 addHandler(logger)
 
 debug "Debugging !"
