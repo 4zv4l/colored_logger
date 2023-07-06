@@ -1,6 +1,7 @@
 import std/[logging, strutils, terminal, colors]
 
 type ColoredConsoleLogger = ref object of ConsoleLogger
+const coolerFmtStr* = "$datetime $levelname [$appname] "
 
 proc newColoredLogger*(threshold = lvlAll, fmtStr = defaultFmtStr, useStderr = false): ColoredConsoleLogger =
   ColoredConsoleLogger(levelThreshold: threshold, fmtStr: fmtStr, useStderr: useStderr)
